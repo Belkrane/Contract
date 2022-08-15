@@ -20,18 +20,23 @@ class contract:
         print("Address: ", self.address)
         print("-----------------------------------------------")
 
-        
-
-
 
 def contractMenu():
-        print("1.Input Contract")
-        print("2.Print Contract")
-        print("3.Delete Contract")
-        print("4.EXIT")
-        menu = input("Choose Menu: ")
+    print("1.Input Contract")
+    print("2.Print Contract")
+    print("3.Delete Contract")
+    print("4.EXIT")
+    menu = input("Choose Menu: ")
         
-        return int(menu)
+    return int(menu)
+
+def delete_contract(contract_list):
+    name = input("Name? ")
+
+    for contract in contract_list:
+        if contract.name == name:
+            contract_list.remove(contract)
+            
 
 
 def run():
@@ -47,7 +52,8 @@ def run():
         elif menuNumber == 2:
             for Outcontract in contract_list :
                 Outcontract.print_contract()
-
+        elif menuNumber == 3:
+            delete_contract(contract_list)
         elif menuNumber == 4:
             break
 
