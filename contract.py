@@ -1,9 +1,10 @@
 class contract:
-    def __init__(self, name, phoneNumber, emailAddress, address):
-        self.name = name
-        self.phoneNumber = phoneNumber
-        self.emailAddress  = emailAddress
-        self.address = address
+    def __init__(self):
+        self.name = input("Name? ")
+        self.phoneNumber = input("Phone Number? ")
+        self.emailAddress = input("Email Address? ")
+        self.address = input("Address? ")
+        
     
     def set_contract(self, name, phoneNumber, emailAdress, address):
         self.name = name
@@ -12,28 +13,41 @@ class contract:
         self.address  = address
 
     def print_contract(self):
-        print("Name: %s", self.name)
-        print("Phone Number: %s", self.phoneNumber)
-        print("Email Address: %s", self.emailAddress)
-        print("Address: %s", self.address)
+        print("-----------------------------------------------")
+        print("Name: ", self.name)
+        print("Phone Number: ", self.phoneNumber)
+        print("Email Address: ", self.emailAddress)
+        print("Address: ", self.address)
+        print("-----------------------------------------------")
 
 
 
-def contractMenu(self):
-        print("1.연락처 입력")
-        print("2.연락처 출력")
-        print("3.연락처 삭제")
-        print("4.종료")
-        menu = input("메뉴 선택: ")
+def contractMenu():
+        print("1.Input Contract")
+        print("2.Print Contract")
+        print("3.Delete Contract")
+        print("4.EXIT")
+        menu = input("Choose Menu: ")
         
-        return (int)menu
+        return int(menu)
 
 
 def run():
     print("running Contract...")
+    contract_list = []
 
-    while true:
+    while 1:
         menuNumber = contractMenu()
+
+        if menuNumber == 1:
+            newContract = contract()
+            contract_list.append(newContract)
+        elif menuNumber == 2:
+            for Outcontract in contract_list :
+                Outcontract.print_contract()
+
+        elif menuNumber == 4:
+            break
 
 
 
