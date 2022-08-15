@@ -20,6 +20,8 @@ class contract:
         print("Address: ", self.address)
         print("-----------------------------------------------")
 
+        
+
 
 
 def contractMenu():
