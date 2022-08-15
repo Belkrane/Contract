@@ -38,6 +38,18 @@ def delete_contract(contract_list):
             contract_list.remove(contract)
             
 
+def saveContractFile(contract_list):
+    contractFile = open("./contract_db.txt", "w")
+    
+    for contract in contract_list:
+        contractFile.write(contract.name + '\n')
+        contractFile.write(contract.phoneNumber + '\n')
+        contractFile.write(contract.emailAddress + '\n')
+        contractFile.write(contract.address + '\n')
+    
+    contractFile.close()
+
+
 
 def run():
     print("running Contract...")
@@ -55,6 +67,7 @@ def run():
         elif menuNumber == 3:
             delete_contract(contract_list)
         elif menuNumber == 4:
+            saveContractFile(contract_list)
             break
 
 
