@@ -5,7 +5,9 @@ class contract:
         self.emailAddress = input("Email Address? ")
         self.address = input("Address? ")
         
-    
+    def __init__(self):
+        return
+
     def set_contract(self, name, phoneNumber, emailAdress, address):
         self.name = name
         self.phoneNumber = phoneNumber
@@ -37,6 +39,7 @@ def delete_contract(contract_list):
         if contract.name == name:
             contract_list.remove(contract)
             
+    return contract_list
 
 def saveContractFile(contract_list):
     contractFile = open("./contract_db.txt", "w")
@@ -49,11 +52,30 @@ def saveContractFile(contract_list):
     
     contractFile.close()
 
+def loadContractFile():
+    contractFile = open("./contract_db.txt", "r")
+
+    contractInfo = contractFile.readlines()
+    contract_list = []
+    itemCount = int(len(contractInfo) / 4)
+
+    for i in range(itemCount):
+        name = contractInfo[i * 4].rstrip('\n')
+        phoneNumber = contractInfo[i * 4 + 1].rstrip('\n')
+        emailAddress = contractInfo[i * 4 + 2].rstrip('\n')
+        address = contractInfo[i * 4 + 3].rstrip('\n')
+        contract_item = contract()
+        contract_item.set_contract(name, phoneNumber, emailAddress, address)
+
+        contract_list.append(contract_item)
+
+    return contract_list
 
 
 def run():
     print("running Contract...")
     contract_list = []
+    contract_list = loadContractFile()
 
     while 1:
         menuNumber = contractMenu()
@@ -65,7 +87,7 @@ def run():
             for Outcontract in contract_list :
                 Outcontract.print_contract()
         elif menuNumber == 3:
-            delete_contract(contract_list)
+            contract_list = delete_contract(contract_list)
         elif menuNumber == 4:
             saveContractFile(contract_list)
             break
